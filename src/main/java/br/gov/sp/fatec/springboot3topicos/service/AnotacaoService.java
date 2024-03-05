@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.springboot3topicos.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,10 @@ public class AnotacaoService {
             .buscarUsuarioPorId(anotacao.getUsuario().getId());
         anotacao.setUsuario(usuario);
         return anotacaoRepo.save(anotacao);
+    }
+
+    public List<Anotacao> buscarTodas() {
+        return anotacaoRepo.findAll();
     }
 
     
