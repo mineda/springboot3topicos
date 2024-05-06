@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import br.gov.sp.fatec.springboot3topicos.entity.Anotacao;
+import br.gov.sp.fatec.springboot3topicos.entity.Views;
 import br.gov.sp.fatec.springboot3topicos.service.AnotacaoService;
 
 @RestController
@@ -22,6 +25,7 @@ public class AnotacaoController {
     private AnotacaoService service;
 
     @GetMapping
+    @JsonView(Views.AnotacaoComUsuario.class)
     public List<Anotacao> buscarTodasAnotacoes() {
         return service.buscarTodas();
     }
