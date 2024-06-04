@@ -60,6 +60,32 @@ create table rac_racao (
   rac_avaliacao int
 );
 
+create table bal_balanco (
+  bal_id bigint unsigned not null auto_increment,
+  bal_desc varchar(256) not null,
+  bal_data_hora datetime not null,
+  bal_valor numeric(10,2) not null,
+  primary key (bal_id)
+);
+
+create table enc_encomenda (
+  enc_rastreio bigint unsigned not null auto_increment,
+  enc_conteudo varchar(256) not null,
+  enc_data_hora_prevista datetime not null,
+  enc_data_hora_entrega datetime,
+  primary key (enc_rastreio)
+);
+
 insert into rac_racao (rac_nome, rac_data_hora_ultima_compra, rac_estoque, rac_avaliacao)
   values ('Purina', '2024-03-15 23:59:59', 10.5, 7),
     ('Pedigree', current_timestamp(), 3, null);
+insert into bal_balanco(bal_desc, bal_data_hora, bal_valor)
+  values('Supermercado', '2024-03-16 10:25', -221.45);
+insert into bal_balanco(bal_desc, bal_data_hora, bal_valor)
+  values('Salário', '2024-03-18 07:00', 4230.70);
+insert into enc_encomenda(enc_conteudo, enc_data_hora_prevista, enc_data_hora_entrega)
+  values('Nintendo Switch', '2024-06-10 19:00', null);
+insert into enc_encomenda(enc_conteudo, enc_data_hora_prevista, enc_data_hora_entrega)
+  values('Sabonete Líquido', '2024-05-25 10:00', '2024-05-27 12:00');
+insert into enc_encomenda(enc_conteudo, enc_data_hora_prevista, enc_data_hora_entrega)
+  values('Refrigerante', '2024-05-26 11:00', '2024-05-24 10:30');
