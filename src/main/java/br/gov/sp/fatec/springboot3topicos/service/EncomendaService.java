@@ -33,7 +33,7 @@ public class EncomendaService {
     }
 
     public List<Encomenda> buscarPorConteudoOuDataHoraPrevista(String conteudo, LocalDateTime dataHoraPrevista) {
-        return repo.findByConteudoContainsIgnoreCaseOrDataHoraPrevistaLessThan(conteudo, dataHoraPrevista);
+        return repo.findByConteudoContainsIgnoreCaseOrDataHoraPrevistaGreaterThan(conteudo, dataHoraPrevista);
     }
     
 }

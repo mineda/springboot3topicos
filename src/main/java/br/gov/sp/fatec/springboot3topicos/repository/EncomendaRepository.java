@@ -9,6 +9,6 @@ import br.gov.sp.fatec.springboot3topicos.entity.Encomenda;
 
 public interface EncomendaRepository extends JpaRepository<Encomenda, Long>{
 
-    public List<Encomenda> findByConteudoContainsIgnoreCaseOrDataHoraPrevistaLessThan(String conteudo, LocalDateTime dataHoraPrevista);
+    public List<Encomenda> findByConteudoContainsIgnoreCaseOrDataHoraPrevistaGreaterThan(String conteudo, LocalDateTime dataHoraPrevista);
     
 }

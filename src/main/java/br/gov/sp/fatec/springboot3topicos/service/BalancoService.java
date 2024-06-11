@@ -25,9 +25,13 @@ public class BalancoService {
     public Balanco novo(Balanco balanco) {
         if(balanco == null ||
                 balanco.getDescricao() == null ||
-                balanco.getDescricao().isBlank()||
-                balanco.getValor() == null) {
+                balanco.getDescricao().isBlank() ||
+                balanco.getValorUnitario() == null ||
+                balanco.getQuantidade() <= 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dados inválidos!");
+        }
+        if(balanco.getQuantidade() == null) {
+            balanco.setQuantidade(1);
         }
         if(balanco.getDataHora() == null) {
             balanco.setDataHora(LocalDateTime.now());
@@ -36,7 +40,7 @@ public class BalancoService {
     }
 
     public List<Balanco> buscarPorDescricaoEValor(String descricao, BigDecimal valor) {
-        return repo.findByDescricaoContainsIgnoreCaseAndValorGreaterThan(descricao, valor);
+        return repo.findByDescricaoContainsIgnoreCaseAndValorUnitarioGreaterThan(descricao, valor);
     }
     
 }

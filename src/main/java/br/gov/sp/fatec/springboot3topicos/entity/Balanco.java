@@ -25,15 +25,19 @@ public class Balanco {
     @Column(name = "bal_data_hora")
     private LocalDateTime dataHora;
 
-    @Column(name = "bal_valor")
-    private BigDecimal valor;
+    @Column(name = "bal_valor_unitario")
+    private BigDecimal valorUnitario;
+
+    @Column(name = "bal_quantidade")
+    private Integer quantidade;
 
     public Balanco() {}
 
-        public Balanco(String descricao, LocalDateTime dataHora, BigDecimal valor) {
+        public Balanco(String descricao, LocalDateTime dataHora, BigDecimal valorUnitario, Integer quantidade) {
         this.descricao = descricao;
         this.dataHora = dataHora;
-        this.valor = valor;
+        this.valorUnitario = valorUnitario;
+        this.quantidade = quantidade;
     }
 
     public Long getId() {
@@ -60,12 +64,20 @@ public class Balanco {
         this.dataHora = dataHora;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorUnitario() {
+        return valorUnitario;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValorUnitario(BigDecimal valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
       
 }

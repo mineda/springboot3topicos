@@ -9,6 +9,6 @@ import br.gov.sp.fatec.springboot3topicos.entity.Balanco;
 
 public interface BalancoRepository extends JpaRepository<Balanco, Long>{
 
-    public List<Balanco> findByDescricaoContainsIgnoreCaseAndValorGreaterThan(String descricao, BigDecimal valor);
+    public List<Balanco> findByDescricaoContainsIgnoreCaseAndValorUnitarioGreaterThan(String descricao, BigDecimal valor);
     
 }

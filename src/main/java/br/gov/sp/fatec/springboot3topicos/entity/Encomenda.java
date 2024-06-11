@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.springboot3topicos.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -20,6 +21,9 @@ public class Encomenda {
 
     @Column(name = "enc_conteudo")
     private String conteudo;
+
+    @Column(name = "enc_valor_declarado")
+    private BigDecimal valorDeclarado;
 
     @Column(name = "enc_data_hora_prevista")
     private LocalDateTime dataHoraPrevista;
@@ -64,6 +68,14 @@ public class Encomenda {
 
     public void setDataHoraEntrega(LocalDateTime dataHoraEntrega) {
         this.dataHoraEntrega = dataHoraEntrega;
+    }
+
+    public BigDecimal getValorDeclarado() {
+        return valorDeclarado;
+    }
+
+    public void setValorDeclarado(BigDecimal valorDeclarado) {
+        this.valorDeclarado = valorDeclarado;
     }
 
 }

@@ -64,28 +64,44 @@ create table bal_balanco (
   bal_id bigint unsigned not null auto_increment,
   bal_desc varchar(256) not null,
   bal_data_hora datetime not null,
-  bal_valor numeric(10,2) not null,
+  bal_valor_unitario numeric(10,2) not null,
+  bal_quantidade int not null,
   primary key (bal_id)
 );
 
 create table enc_encomenda (
   enc_rastreio bigint unsigned not null auto_increment,
   enc_conteudo varchar(256) not null,
+  enc_valor_declarado numeric(10,2),
   enc_data_hora_prevista datetime not null,
   enc_data_hora_entrega datetime,
   primary key (enc_rastreio)
 );
 
+create table med_medicao (
+  med_id bigint unsigned not null auto_increment,
+  med_tipo varchar(256) not null,
+  med_data_hora datetime not null,
+  med_valor numeric(10,2) not null,
+  med_valor_minimo numeric(10,2),
+  med_valor_maximo numeric(10,2),
+  primary key (med_id)
+);
+
 insert into rac_racao (rac_nome, rac_data_hora_ultima_compra, rac_estoque, rac_avaliacao)
   values ('Purina', '2024-03-15 23:59:59', 10.5, 7),
     ('Pedigree', current_timestamp(), 3, null);
-insert into bal_balanco(bal_desc, bal_data_hora, bal_valor)
-  values('Supermercado', '2024-03-16 10:25', -221.45);
-insert into bal_balanco(bal_desc, bal_data_hora, bal_valor)
-  values('Salário', '2024-03-18 07:00', 4230.70);
-insert into enc_encomenda(enc_conteudo, enc_data_hora_prevista, enc_data_hora_entrega)
-  values('Nintendo Switch', '2024-06-10 19:00', null);
+insert into bal_balanco(bal_desc, bal_data_hora, bal_valor_unitario, bal_quantidade)
+  values('Supermercado', '2024-03-16 10:25', -221.45, 2);
+insert into bal_balanco(bal_desc, bal_data_hora, bal_valor_unitario, bal_quantidade)
+  values('Salário', '2024-03-18 07:00', 4230.70, 1);
+insert into enc_encomenda(enc_conteudo, enc_valor_declarado, enc_data_hora_prevista, enc_data_hora_entrega)
+  values('Nintendo Switch', 1850.00, '2024-06-10 19:00', null);
 insert into enc_encomenda(enc_conteudo, enc_data_hora_prevista, enc_data_hora_entrega)
   values('Sabonete Líquido', '2024-05-25 10:00', '2024-05-27 12:00');
 insert into enc_encomenda(enc_conteudo, enc_data_hora_prevista, enc_data_hora_entrega)
   values('Refrigerante', '2024-05-26 11:00', '2024-05-24 10:30');
+insert into med_medicao(med_tipo, med_data_hora, med_valor, med_valor_minimo, med_valor_maximo)
+  values('Temperatura', '2024-05-26 11:00', 22.1, 17.8, 23.6);
+insert into med_medicao(med_tipo, med_data_hora, med_valor, med_valor_minimo, med_valor_maximo)
+  values('Temperatura', '2024-05-26 12:00', 27.1, 17.8, 23.6);
